@@ -298,6 +298,16 @@ class Geometry:
     )
 
   @property
+  def R_major_profile(self) -> array_typing.Array:
+    """Local major radius profile on cell grid [m], defined as (R_in + R_out)/2."""
+    return (self.R_in + self.R_out) / 2
+
+  @property
+  def R_major_profile_face(self) -> array_typing.Array:
+    """Local major radius profile on face grid [m], defined as (R_in_face + R_out_face)/2."""
+    return (self.R_in_face + self.R_out_face) / 2
+
+  @property
   def drho(self) -> array_typing.Array:
     """Grid size for rho [m]."""
     return self.drho_norm * self.rho_b

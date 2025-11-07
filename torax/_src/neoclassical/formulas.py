@@ -130,12 +130,11 @@ def calculate_nu_e_star(
   Returns:
     The electron collisionality.
   """
-  # Use local major radius for neoclassical collisionality calculation
-  r_major_face = (geo.R_in_face + geo.R_out_face) / 2
+    # Use local major radius for neoclassical collisionality calculation
   return (
       6.921e-18
       * q
-      * r_major_face
+      * geo.R_major_profile_face
       * n_e
       * Z_eff
       * log_lambda_ei
@@ -170,12 +169,11 @@ def calculate_nu_i_star(
   Returns:
     The ion collisionality.
   """
-  # Use local major radius for neoclassical collisionality calculation
-  r_major_face = (geo.R_in_face + geo.R_out_face) / 2
+    # Use local major radius for neoclassical collisionality calculation
   return (
       4.9e-18
       * q
-      * r_major_face
+      * geo.R_major_profile_face
       * n_i
       * Z_eff**4
       * log_lambda_ii

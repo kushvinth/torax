@@ -123,13 +123,12 @@ def calc_nu_star(
 
   # calculate bounce time
   # Use local major radius for more accurate local calculations
-  r_major_face = (geo.R_in_face + geo.R_out_face) / 2
-  epsilon = geo.rho_face / r_major_face
+  epsilon = geo.rho_face / geo.R_major_profile_face
   # to avoid divisions by zero
   epsilon = jnp.clip(epsilon, constants.CONSTANTS.eps)
   tau_bounce = (
       core_profiles.q_face
-      * r_major_face
+      * geo.R_major_profile_face
       / (
           epsilon**1.5
           * jnp.sqrt(
